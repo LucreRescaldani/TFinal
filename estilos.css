@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
   font-family: 'Lato', sans-serif; 
 }
@@ -28,34 +27,3 @@ nav img {
   height:inherit; 
   overflow-x:"scroll"; 
 }
-=======
-html{
-  font-family: 'Roboto Flex', sans-serif;
-}
-/* Encabezado */
-nav img {
-  width: 120px;
-} 
-/* Carousel base */
-.oscurecer{
-  filter: brightness(50%);
-  }
-/* Dada la posición de la imagen, necesito ayudar al subtítulo*/
-.carousel-caption {
-  bottom: 8rem;
-  z-index: 10;
-  }
-/* Declarar alturas debido al posicionamiento del elemento img */
-.carousel-item {
-  height: rem;
-  }
-/* Contacto */
-.subrayado_con_puntos{
-  text-decoration: underline;
-  text-decoration-style: dotted;
-}
-.card-text{
-  height:inherit; 
-  overflow-x:"scroll"; 
-}
->>>>>>> b7067d67d5050c3ddba88553d713f984dccdcd3f
