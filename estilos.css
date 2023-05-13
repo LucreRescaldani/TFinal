@@ -1,11 +1,12 @@
 /*font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300&display=swap');
+
 body {
   font-family: 'Roboto Flex', sans-serif;
-}
+} 
 /* Encabezado */
 nav img {
-  width: 120px;
+  width: 80px;
 } 
 /* Carousel base */
 .oscurecer{
