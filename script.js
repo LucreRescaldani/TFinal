@@ -4,9 +4,9 @@ var email=document.getElementById('emailInput');
 var cantidadTicket=document.getElementById('cantidadInput');
 var tipoTicket=document.getElementById('categoriaInput');
 
-alert("Hola!!")
+// alert("Hola!!")
 
-console.log("Nombre: " + nombre);
+console.log(`Nombre: ${nombre}`);
 console.log("Apellido: " + apellido);
 console.log("Correo: " + email);
 console.log("Cantidad: " + cantidadTicket);
