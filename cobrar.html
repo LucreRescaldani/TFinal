@@ -44,19 +44,16 @@
                                 <a class="nav-link" href="./#Comprar">La conferencia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
-                                    href="./#seccionOradores">Los
+                                <a class="nav-link" href="./#seccionOradores">Los
                                     oradores</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
-                                    href="./#seccionLugarFecha">El
+                                <a class="nav-link" href="./#seccionLugarFecha">El
                                     lugar y la fecha</a>
 
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white"
-                                    href="./#seccionContacto">Conviértete
+                                <a class="nav-link text-white" href="./#seccionContacto">Conviértete
                                     en orador</a> <!-- Preguntar -->
                             </li>
                             <li class="nav-item">
@@ -135,8 +132,8 @@
                         <input type="email" class="form-control" id="emailInput" placeholder="Correo" required>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="mx-1 my-2" id="cantidadInput" class="form-label">Cantidad</label>
-                        <input type="text" class="form-control" placeholder="Cantidad" required>
+                        <label class="mx-1 my-2" class="form-label">Cantidad</label>
+                        <input type="text" class="form-control" id="cantidadInput" placeholder="Cantidad" required>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="mx-1 my-2" id="categoriaInput" class="form-label" placeholder="Categoria"
@@ -149,8 +146,8 @@
                         </select>
                     </div>
                     <div class="col">
-                        <div id="totalCompra" class="fs-5 mb-3 p-2 alert-primary"
-                            style="background-color: #cce5ff">Total a Pagar: $ </p>
+                        <div id="totalCompra" class="fs-5 mb-3 p-2 alert-primary" style="background-color: #cce5ff">
+                            Total a Pagar: $ 
                         </div>
                         <!--Botones -->
                         <div class="row">
@@ -159,8 +156,10 @@
                                     style="background-color: #96c93e;">Borrar</button>
                             </div>
                             <div class="col-md-6 mb-3 d-grid">
-                                <button type="submit" class="btn text-dark fs-5 pb-3"
-                                    style="background-color: #96c93e;">Resumen</button>
+                                <button type="submit" class="btn text-dark fs-5 pb-3" 
+                                    onclick='document.getElementById("totalCompra").innerHTML = "Total a Pagar: $200"'
+                                    style="background-color: #96c93e;">Resumen
+                                </button>
                             </div>
                         </div>
                 </form>
