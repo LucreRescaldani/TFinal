@@ -119,32 +119,35 @@
 
             <!-- Formulario -->
             <div class="container">
-                <form class="row" name="formulario_comprar" id="formulario_comprar" action="#">
+                <form class="row needs-validation" name="formulario_comprar" id="formulario_comprar" action="#" novalidate>
                     <div class="col-md-6 mb-3">
-                        <input type="text" class="form-control" id="nombreInput" name="nombreInput"
-                            placeholder="Nombre: Lucrecia" required>
-                        <p class="error" id="errorNombre">El nombre debe tener al menos de 3 letras</p>
+                        <input type="text" class="form-control is-valid" id="nombreInput" name="nombreInput"
+                            placeholder="Nombre: " required>
+                        <div class="valid-feedback is-invalid" id="errorNombre" aria-hidden="true">
+                        </div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <input type="text" class="form-control" id="apellidoInput" name="apellidoInput"
-                            placeholder="Apellido: RESCALDANI" required>
-                        <p class="error" id="errorApellido">El apellido debe tener 4 o más letras</p>
+                        <input type="text" class="form-control is-valid" id="apellidoInput" name="apellidoInput"
+                            placeholder="Apellido: " required>
+                        <div class="valid-feedback is-invalid" id="errorApellido" aria-hidden="true">
+                        </div>
                     </div>
                     <div class="col-mb-3 mb-3">
-                        <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="Correo"
+                        <input type="email" class="form-control is-valid" id="emailInput" name="emailInput" placeholder="Correo"
                             required>
-                        <p class="error" id="errorEmail"></p>
+                        <p class="valid-feedback is-invalid" id="errorEmail" aria-hidden="true"></p>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="mx-1 my-2" class="form-label">Cantidad</label>
-                        <input type="text" class="form-control" id="cantidadInput" name="cantidadInput"
+                        <input type="number" class="form-control is-valid" id="cantidadInput" name="cantidadInput" min="1" max="99"
                             placeholder="Cantidad" required>
-                        <p class="error" id="errorCantidad"></p>
+                        <div class="error is-invalid" id="errorCantidad">
+                        </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="mx-1 my-2" class="form-label" placeholder="Categoria" required>Categoria</label>
                         <!-- <p class="error" id="errorTipo" ></p> -->
-                        <select class="form-select" id="categoriaSelect" name="categoriaSelect">
+                        <select class="form-select is-valid" id="categoriaSelect" name="categoriaSelect">
                             <option selected value="1">Estudiante</option>
                             <option value="2">Trainee</option>
                             <option value="3">Junior</option>
@@ -158,7 +161,7 @@
                         <!--Botones -->
                         <div class="row">
                             <div class="col-md-6 mb-3 d-grid">
-                                <button type="reset" class="btn text-dark fs-5 pb-3"
+                                <button type="reset" class="btn text-dark fs-5 pb-3" id="borrar" value="borrar"
                                     style="background-color: #96c93e;">Borrar</button>
                             </div>
                             <div class="col-md-6 mb-3 d-grid">

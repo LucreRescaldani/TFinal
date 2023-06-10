@@ -2,18 +2,18 @@
 const formularioComprar = document.getElementById("formulario_comprar");
 
 // Obtener la referencia a los campos nombre, apellido, email y cantidad de tickets
-const nombre = document.getElementById("nombreInput");
-const apellido = document.getElementById("apellidoInput");
-const email = document.getElementById("emailInput");
+let nombre = document.getElementById("nombreInput");
+let apellido = document.getElementById("apellidoInput");
+let email = document.getElementById("emailInput");
 let cantTicket = document.getElementById("cantidadInput");
 
 // Obtener la referencia a la lista de categoría de tickets
-let ticket = document.getElementById("categoriaSelect"); // 1-2-3-4
+let ticket = document.getElementById("categoriaSelect"); // "1" o "2" o "3" o "4"
 
 let totCompra = 200;  // en la variable totCompra guardo el valor de la entrada sin descuento
 
 const botonEnviar = document.getElementById("enviar");
-
+const botonBorrar = document.getElementById("borrar");
 
 function mostar() {
     console.log("Nombre: " + nombre.value);
@@ -24,33 +24,31 @@ function mostar() {
 }
 
 function validar() {
-    if (nombre.value == null || nombre.value.length <= 3 || /^\s+$/.test(nombre.value)) {
-        // Si no se cumple la condicion...
-        document.getElementById("errorNombre").innerHTML = "El nombre no es válido";
+    alert("entro a validar"+nombre.value)
+    if (!(/^[a-z A-Z Á-ÿ\s]{3,25}$/.test(nombre.value))) {
+        alert("entro a validar nombre"+ nombre.value)
+        // Si no se cumple la condicion... 
+        document.getElementById("errorNombre").innerHTML = "El nombre no es válido.";
         return false;
     }
-    else if (apellido.value == null || apellido.value.length <= 4 || /^\s+$/.test(apellido.value)) {
+    else if (!(/^[a-z A-Z Á-ÿ\s]{3,25}$/.test(apellido.value))) {
         // Si no se cumple la condicion...
         document.getElementById("errorApellido").innerHTML = "El apellido no es válido";
         return false;
     }
-    else if ((/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(email.value))) {
-        // Si no se cumple la condicion...
-        document.getElementById("errorEmail").innerHTML = "El email no es válido";
+    else if ((/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)+$/.test(email.value))) { 
+        // Si no se cumple la condicion...    /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/   /^[a-z A-Z 0-9.-_+]+@[a-z A-Z 0-9-]+\.[a-z A-Z 0-9-.]+$/
+        document.getElementById("errorEmail").innerHTML = "El email no coincide con el formato prueba@ejemplo.com";
         return false;
     }
-    else if (cantTicket.value < 1 || !(/^\d{1}$/.test(cantTicket.value))) {
-        // Si no se cumple la condicion...
-        document.getElementById("errorCantidad").innerHTML = "La cantidad de tickets no es válida";
-        return false;
-    }
+    else {
     // Si el script ha llegado a este punto, todas las condiciones
     // se han cumplido, por lo que se devuelve el valor true y coloca en blanco los carteles de error
     document.getElementById("errorNombre").innerHTML = "";
     document.getElementById("errorApellido").innerHTML = "";
     document.getElementById("errorEmail").innerHTML = "";
-    document.getElementById("errorCantidad").innerHTML = "";
     return true;
+    }   
 }
 
 function calcular() {
@@ -72,14 +70,57 @@ function calcular() {
             document.getElementById("totalCompra").innerHTML = "Total a Pagar: $" + totCompra;
             break
         default:
-            console.log("No es tipo de ticket válido")
+            console.log("El tipo de ticket no es válido");
             break
     }
+}
+
+function limpiar(){
+    document.getElementById("nombreInput").innerHTML = "";
+    document.getElementById("apellidoInput").innerHTML = "";
+    document.getElementById("emailInput").innerHTML = "";
+    document.getElementById("cantidadInput").innerHTML = "";
+    document.getElementById("totalCompra").innerHTML = "Total a Pagar: $";
 }
 
 formularioComprar.addEventListener('submit', (e) => {
     e.preventDefault();
 })
+
+formularioComprar.addEventListener('reset', (e) =>{ 
+    e.defaultPrevented
+});
+
+
 botonEnviar.addEventListener("click", mostar);
 botonEnviar.addEventListener("click", validar);
-botonEnviar.addEventListener("click", calcular);
+
+// if (validar() == true) {
+    botonEnviar.addEventListener("click", calcular);
+//}
+//else{
+    botonBorrar.addEventListener("click", limpiar);
+//}
+
+
+
+// Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
+(function ()  {
+    'use strict'
+  
+    // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Bucle sobre ellos y evitar el envío
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
