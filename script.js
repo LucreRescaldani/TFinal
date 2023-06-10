@@ -117,9 +117,8 @@ formularioComprar.addEventListener('submit', (e) => {
     e.preventDefault();
 })
 
-formularioComprar.addEventListener('reset', (e) =>{ 
-    e.preventDefault()
-});
+formularioComprar.addEventListener('reset', (e) =>{});
+onreset = (e) => {};
 
 
 botonEnviar.addEventListener("click", mostar);
