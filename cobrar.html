@@ -123,30 +123,34 @@
                     <div class="col-md-6 mb-3">
                         <input type="text" class="form-control is-valid" id="nombreInput" name="nombreInput"
                             placeholder="Nombre: " required>
-                        <div class="valid-feedback is-invalid" id="errorNombre" aria-hidden="true">
+                        <div class="invalid-feedback" id="errorNombre" aria-hidden="true">
+                            El nombre no es válido
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <input type="text" class="form-control is-valid" id="apellidoInput" name="apellidoInput"
                             placeholder="Apellido: " required>
-                        <div class="valid-feedback is-invalid" id="errorApellido" aria-hidden="true">
+                        <div class="invalid-feedback" id="errorApellido" aria-hidden="true">
+                            El apellido no es válido
                         </div>
                     </div>
                     <div class="col-mb-3 mb-3">
                         <input type="email" class="form-control is-valid" id="emailInput" name="emailInput" placeholder="Correo"
                             required>
-                        <p class="valid-feedback is-invalid" id="errorEmail" aria-hidden="true"></p>
+                        <div class="invalid-feedback" id="errorEmail" aria-hidden="true">
+                            El email no coincide con el formato prueba@ejemplo.com
+                        </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="mx-1 my-2" class="form-label">Cantidad</label>
                         <input type="number" class="form-control is-valid" id="cantidadInput" name="cantidadInput" min="1" max="99"
                             placeholder="Cantidad" required>
-                        <div class="error is-invalid" id="errorCantidad">
+                        <div class="invalid-feedback" id="errorCantidad">
+                            La cantidad no puede ser cero
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="mx-1 my-2" class="form-label" placeholder="Categoria" required>Categoria</label>
-                        <!-- <p class="error" id="errorTipo" ></p> -->
                         <select class="form-select is-valid" id="categoriaSelect" name="categoriaSelect">
                             <option selected value="1">Estudiante</option>
                             <option value="2">Trainee</option>

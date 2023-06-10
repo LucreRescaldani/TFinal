@@ -15,6 +15,29 @@ let totCompra = 200;  // en la variable totCompra guardo el valor de la entrada 
 const botonEnviar = document.getElementById("enviar");
 const botonBorrar = document.getElementById("borrar");
 
+// Función para deshabilitar el envío de formularios si hay campos no válidos
+(function ()  {
+    'use strict'
+  
+    // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Bucle sobre ellos y evitar el envío
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            //validar()
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+
+// Función para controlar y mostrar valores en Consola
 function mostar() {
     console.log("Nombre: " + nombre.value);
     console.log("Apellido: " + apellido.value);
@@ -23,15 +46,14 @@ function mostar() {
     console.log("Categoria: " + ticket.value);
 }
 
+// Función para validar campos del formulario y mostrar mensajes de error
 function validar() {
-    alert("entro a validar"+nombre.value)
-    if (!(/^[a-z A-Z Á-ÿ\s]{3,25}$/.test(nombre.value))) {
-        alert("entro a validar nombre"+ nombre.value)
+    if (/^[a-z A-Z Á-ÿ\s]{3,25}$/.test(nombre.value)) {
         // Si no se cumple la condicion... 
         document.getElementById("errorNombre").innerHTML = "El nombre no es válido.";
         return false;
     }
-    else if (!(/^[a-z A-Z Á-ÿ\s]{3,25}$/.test(apellido.value))) {
+    else if ((/^[a-z A-Z Á-ÿ\s]{3,25}$/.test(apellido.value))) {
         // Si no se cumple la condicion...
         document.getElementById("errorApellido").innerHTML = "El apellido no es válido";
         return false;
@@ -41,16 +63,23 @@ function validar() {
         document.getElementById("errorEmail").innerHTML = "El email no coincide con el formato prueba@ejemplo.com";
         return false;
     }
+    else if (cantTicket == 0) { 
+        // Si no se cumple la condicion...
+        document.getElementById("errorCantidad").innerHTML = "La cantidad debe ser mayor a cero";
+        return false;
+    }
     else {
     // Si el script ha llegado a este punto, todas las condiciones
     // se han cumplido, por lo que se devuelve el valor true y coloca en blanco los carteles de error
     document.getElementById("errorNombre").innerHTML = "";
     document.getElementById("errorApellido").innerHTML = "";
     document.getElementById("errorEmail").innerHTML = "";
+    document.getElementById("errorCantidad").innerHTML = "";
     return true;
     }   
 }
 
+// Función para calcular el valor de compra según cantidad y tipo de ticket seleccionado
 function calcular() {
     switch (ticket.value) {
         case "1":
@@ -75,6 +104,7 @@ function calcular() {
     }
 }
 
+// Función para limpiar mensajes de error
 function limpiar(){
     document.getElementById("nombreInput").innerHTML = "";
     document.getElementById("apellidoInput").innerHTML = "";
@@ -88,39 +118,23 @@ formularioComprar.addEventListener('submit', (e) => {
 })
 
 formularioComprar.addEventListener('reset', (e) =>{ 
-    e.defaultPrevented
+    e.preventDefault()
 });
 
 
 botonEnviar.addEventListener("click", mostar);
 botonEnviar.addEventListener("click", validar);
+botonEnviar.addEventListener("click", calcular);
+botonBorrar.addEventListener("click", limpiar);
+
 
 // if (validar() == true) {
-    botonEnviar.addEventListener("click", calcular);
+//    botonEnviar.addEventListener("click", calcular);
 //}
 //else{
-    botonBorrar.addEventListener("click", limpiar);
+//    botonBorrar.addEventListener("click", limpiar);
 //}
 
 
 
-// Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
-(function ()  {
-    'use strict'
-  
-    // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
-    var forms = document.querySelectorAll('.needs-validation')
-  
-    // Bucle sobre ellos y evitar el envío
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-  
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })()
+
